@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MeraMapsAndroid</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="directionsApiKey">AIzaSyCsmAhsKHNq-WTPXUpUemi2t5lt0CBmw8s</string>
+    <string name="fragment_map__search">Search...</string>
+
+</resources>
