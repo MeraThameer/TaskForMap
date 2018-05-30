@@ -100,6 +100,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             addPolyline(results, googleMap);
             positionCamera( results.routes[overview], googleMap);
             addMarkersToMap(results, googleMap);
+
+            // trst code 
         }
     }
 
