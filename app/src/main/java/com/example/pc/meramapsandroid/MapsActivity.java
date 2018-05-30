@@ -1,5 +1,4 @@
 package com.example.pc.meramapsandroid;
-
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
@@ -10,13 +9,12 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Display;
 import android.view.View;
+import android.webkit.WebStorage;
 import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.RelativeLayout;
 import android.widget.ArrayAdapter;
 import android.widget.Toast;
-
-
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.Status;
@@ -49,9 +47,7 @@ import com.google.maps.errors.ApiException;
 import com.google.maps.model.DirectionsResult;
 import com.google.maps.model.DirectionsRoute;
 import com.google.maps.model.TravelMode;
-
 import org.joda.time.DateTime;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -60,7 +56,6 @@ import java.util.concurrent.TimeUnit;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
     private static final int overview = 0;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +64,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
     }
-
     private DirectionsResult getDirectionsDetails(String origin,String destination,TravelMode mode) {
         DateTime now = new DateTime();
         try {
@@ -88,21 +82,24 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         } catch (IOException e) {
             e.printStackTrace();
             return null;
-        }
-    }
-
+        }}
     @Override
     public void onMapReady(GoogleMap googleMap) {
-
+        LatLng dubai = new LatLng(25.16694589, 55.40879855);
+        googleMap.addMarker(new MarkerOptions().position(dubai).title("Marker in Dubai"));
+        googleMap.moveCamera(CameraUpdateFactory.newLatLng(dubai));
         setupGoogleMapScreenSettings(googleMap);
-        DirectionsResult results = getDirectionsDetails("483 George St, Sydney NSW 2000, Australia","182 Church St, Parramatta NSW 2150, Australia",TravelMode.DRIVING);
+        MarkerOptions markerOptions = new MarkerOptions();
+        markerOptions.title("Mera");
+        markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.location));
+        DirectionsResult results = getDirectionsDetails("Dubai, UAE","Sharjah, UAE",TravelMode.DRIVING);
         if (results != null) {
             addPolyline(results, googleMap);
             positionCamera( results.routes[overview], googleMap);
             addMarkersToMap(results, googleMap);
-
-            // trst code 
         }
+        //googleMap.clear();
+        //googleMap.addMarker(markerOptions);
     }
 
     private void setupGoogleMapScreenSettings(GoogleMap mMap) {
@@ -147,3 +144,4 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .setWriteTimeout(1, TimeUnit.SECONDS);
     }
 }
+
