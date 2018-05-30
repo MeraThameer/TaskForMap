@@ -85,14 +85,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }}
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        LatLng dubai = new LatLng(25.16694589, 55.40879855);
-        googleMap.addMarker(new MarkerOptions().position(dubai).title("Marker in Dubai"));
+        LatLng dubai = new LatLng(25.28760833, 55.4010211);
+        googleMap.addMarker(new MarkerOptions().position(dubai).title("Marker in Sayed Metal"));
         googleMap.moveCamera(CameraUpdateFactory.newLatLng(dubai));
         setupGoogleMapScreenSettings(googleMap);
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.title("Mera");
         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.location));
-        DirectionsResult results = getDirectionsDetails("277 Bedford Ave, Brooklyn, NY 11211, USA","241-399 Laurel Ln, New Ringgold, PA 17960, USA",TravelMode.DRIVING);
+        DirectionsResult results = getDirectionsDetails("Morocco J2 - Dubai - United Arab Emirates","China A11 - Dubai - United Arab Emirates",TravelMode.DRIVING);
         if (results != null) {
             addPolyline(results, googleMap);
             positionCamera( results.routes[overview], googleMap);
