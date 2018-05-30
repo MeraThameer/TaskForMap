@@ -92,7 +92,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         MarkerOptions markerOptions = new MarkerOptions();
         markerOptions.title("Mera");
         markerOptions.icon(BitmapDescriptorFactory.fromResource(R.drawable.location));
-        DirectionsResult results = getDirectionsDetails("Dubai, UAE","Sharjah, UAE",TravelMode.DRIVING);
+        DirectionsResult results = getDirectionsDetails("277 Bedford Ave, Brooklyn, NY 11211, USA","241-399 Laurel Ln, New Ringgold, PA 17960, USA",TravelMode.DRIVING);
         if (results != null) {
             addPolyline(results, googleMap);
             positionCamera( results.routes[overview], googleMap);

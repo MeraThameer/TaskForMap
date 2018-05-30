@@ -30,7 +30,7 @@
                 android:layout_marginStart="32dp"
                 android:layout_marginEnd="16dp"
                 android:layout_weight="1"
-                android:text="@string/fragment_map__search"
+                android:hint="@string/fragment_map__search"
                 android:textColor="@color/grey"
                 android:textSize="16sp" />
 
